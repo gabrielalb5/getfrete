@@ -1,9 +1,9 @@
 <?php include("../include/cabecalho_inicio.php");
     $_SESSION["cpf"] = $_POST["cpf"];
     $_SESSION["telefone"] = $_POST["telefone"];
-    $_SESSION["estado"] = $_POST["estado"];
+    $_SESSION["uf"] = $_POST["uf"];
     $_SESSION["cidade"] = $_POST["cidade"];
-    //var_dump($_SESSION);
+    $_SESSION["perfil"] = $_FILES["perfil"];
     cadastrarCliente();
 ?>
 <div class="cadastro">

@@ -1,14 +1,15 @@
 <?php include("../include/cabecalho_inicio.php");
     $_SESSION["cpf"] = $_POST["cpf"];
     $_SESSION["telefone"] = $_POST["telefone"];
-    $_SESSION["estado"] = $_POST["estado"];
+    $_SESSION["uf"] = $_POST["uf"];
     $_SESSION["cidade"] = $_POST["cidade"];
+    $_SESSION["perfil"] = $_FILES["perfil"];
 ?>
 <div class="cadastro">
 <div class="form-cad">
     <h2>Cadastro de motorista</h2>
     <h5>dados da CNH</h5>
-    <form action="cadastro_motorista4.php" method="post">
+    <form enctype="multipart/form-data" action="cadastro_motorista4.php" method="post">
     <div id="colunas">
         <div id="col1">
             <div class="textfield">

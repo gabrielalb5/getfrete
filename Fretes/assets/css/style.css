@@ -283,3 +283,10 @@ form #mensagem{
     text-align: center;
     color: red;
 }
+#caixa_erro{
+    display: flex;
+    justify-content: center;
+}
+#caixa_erro > p{
+    width: 90vw;
+}

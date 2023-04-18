@@ -5,5 +5,6 @@
 </footer>
 <script src="../assets/js/script.js"></script>
 <script src="../assets/js/mascaras.js"></script>
+<script src="../assets/js/uf_cidade.js"></script>
 </body>
 </html>

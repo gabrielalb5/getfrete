@@ -9,7 +9,7 @@
 <div class="form-cad">
     <h2>Cadastro de cliente</h2>
     <h5>informações adicionais</h5>
-    <form action="cadastro_cliente3.php" method="post">
+    <form enctype="multipart/form-data" action="cadastro_cliente3.php" method="post">
     <div id="colunas">
         <div id="col1">
             <div class="textfield">
@@ -21,10 +21,9 @@
                 <input type="text" placeholder="(xx) xxxxx-xxxx" id="telefone" name="telefone" maxlength="15" minlength="14" value="<?php if(isset($_SESSION["telefone"])){echo $_SESSION["telefone"];}; ?>" required></br>
             </div>
             <div class="textfield">
-                <label for="estado">Estado</label>
-                <select name="estado" id="estado">
+                <label for="uf">UF</label>
+                <select name="uf" id="uf" required>
                     <option value="">Escolha...</option>
-                    <option value="">São Paulo</option>
                 </select>
             </div>
         </div>
@@ -32,13 +31,12 @@
         <div class="input-box">
             <label for="picture__input">Foto de perfil</label>
             <label class="picture" for="picture__input" tabIndex="0"><span class="picture__image"></span></label>
-            <input type="file" accept="image/*" name="picture__input" id="picture__input">
+            <input type="file" accept="image/*" name="perfil" id="picture__input" required>
         </div>
             <div class="textfield">
                 <label for="cidade">Cidade</label>
-                <select name="cidade" id="cidade">
+                <select name="cidade" id="cidade" required>
                     <option value="">Escolha...</option>
-                    <option value="">Araraquara</option>
                 </select>
             </div>
         </div>

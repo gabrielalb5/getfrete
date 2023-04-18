@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+body{
+    margin: 0;
+}
+.main-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#left-login{
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 5vw;
+}
+#right-login{
+    width: 45vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#card-login{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    background: #F5F5F5;
+    border-radius: 20px;
+    box-shadow:  5px 5px 10px rgba(0, 0, 0, .212);
+}
+.textfield{
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.textfield > input, select{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+}
+#olho{
+    display: flex;
+    position: relative;
+    margin-top: -50px;
+    margin-left: 85%;
+}
+#olho:hover{
+    color: #5F9CB4;
+    cursor: pointer;
+}
+nav, #btn_azul{
+    background-color: #5F9CB4;
+    color: white;
+}
+#nav-link{
+    color: white;
+}
+/*Botão de tipo de usuário*/
+div#opcao_login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div#opcao_login input, label, p{
+    margin-bottom: 10px;
+    margin-right: 10px;
+    accent-color: #5F9CB4;
+}
+#btn_azul, #btn_branco{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+a{
+    text-decoration: none;
+    color: #5F9CB4;
+}
+/*Logo do menu*/
+.logo{
+    width: 200px;
+    background-color: #5F9CB4;
+}
+/*Imagem inicial*/
+.caminhao{
+    width: 40vw;
+}
+.cliente, .motorista{
+    width: 30vw;
+}
+.main-cadastro{
+    margin-bottom: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#right-cadastro, #left-cadastro{
+    margin: 0px 30px;
+    padding: 20px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5F5F5;
+    border-radius: 20px;
+}
+#right-cadastro:hover, #left-cadastro:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, .212);
+}
+#right-cadastro:active, #left-cadastro:active{
+    color: #5F9CB4;
+    box-shadow: 0px 0px 25px #5F9CB4;
+}
+.main-cadastro h3{
+    margin-top: 20px;
+}
+#titulo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px;
+}
+footer{
+    background-color: #F5F5F5;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+footer img{
+    width: 150px;
+}
+
+.toggle-button{
+    color: white;
+    position: absolute;
+    display: none;
+    top: 2.5rem;
+    right: 1rem ;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 30px;
+    height: 20px;
+}
+.toggle-button:hover{
+    color: #E2E2E2;
+}
+
+@media screen and (max-width: 1360px){
+    .main-login{
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        margin: 5vh;
+    }
+    #left-login{
+        width: 50vw;
+    }
+    #card-login{
+        width: 100vw;
+    }
+    .main-cadastro{
+        flex-direction: column;
+    }
+    #right-cadastro{
+        margin-top: 20px;
+    }
+}
+@media screen and (max-width: 1000px){
+    .toggle-button{
+        display: flex;
+    }
+    .navbar-links{
+        display: none;
+        width: 100%;
+    }
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar-links a{
+        display: flex;
+        justify-content: center;
+        
+    }
+    .navbar-links.active{
+        display: flex;
+    }
+}
+.cadastro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-cad{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20%;
+    background-color: #F5F5F5;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 10vh;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, .212);
+}
+.form-cad #colunas{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+#colunas #col1, form #col2{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+.form-cad h2{
+    margin: 20px;
+}
+#picture__input, #foto_cnh{
+    display: none;
+}
+ .picture, .picture2{
+    width: 152px;
+    aspect-ratio: 2/2;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border: 2px dashed currentcolor;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    outline: none;
+    overflow: hidden;
+} 
+.picture:hover{
+    color: #777;
+    background: #ccc;
+}
+.picture:active{
+    border-color: #5F9CB4;
+    color: #5F9CB4;
+    background: #eee;
+}
+.picture:focus{
+    color: #777;
+    background: #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+} 
+  .picture__img{
+    max-width: 100%;
+}
+.input-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.picture2{
+    width: 400px;
+    aspect-ratio: 16/9;
+}
+form #mensagem{
+    text-align: center;
+    color: red;
+}
+#caixa_erro{
+    display: flex;
+    justify-content: center;
+}
+#caixa_erro > p{
+    width: 90vw;
+}

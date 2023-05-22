@@ -1,5 +1,4 @@
-<?php include("../include/cabecalho_inicio.php");
-//var_dump($_SESSION)?>
+<?php include("../include/cabecalho_inicio.php");?>
 <div class="cadastro">
 <div class="form-cad">
     <h2>Cadastro de motorista</h2>

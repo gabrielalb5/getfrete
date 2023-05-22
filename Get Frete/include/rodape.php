@@ -1,3 +1,4 @@
+<div class="espacamento"></div>
 </main>
 <footer class="rodape">
         <div class="footer-logo"><img src="../assets/img/logoblack.png" alt="Get Frete" class="logo-rodape"></div>

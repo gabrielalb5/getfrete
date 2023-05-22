@@ -1,23 +1,3 @@
-/*
-// MENU LATERAL ~ TEM QUE FICAR NESSA ALTURA DO CÓDIGO ~
-var checkBtn = document.querySelector("#check");
-var sidebar = document.querySelector(".sidebar");
-
-if (checkBtn) {
-    checkBtn.addEventListener('click', () => {
-        
-        if (checkBtn.checked) {
-            sidebar.style.animation = 'slide-out 1s ease-out';
-            sidebar.style.left = '0'
-        } else {
-            sidebar.style.animation = 'slide-in 1s ease';
-            sidebar.style.left = '-200px'
-        }
-        
-    })
-}
-*/
-
 //menu responsivo
 const toggleButton = document.querySelector(".toggle-button")
 const navbarLinks = document.querySelector('.navbar-links')
@@ -56,23 +36,20 @@ function red_cad_cliente(){
 function red_cad_motorista(){
     window.location.href = "cadastro_motorista.php";
 }
-function red_cad_motorista2(){
-    window.location.href = "cadastro_motorista2.php";
-}
 function limpar_cadastro(){
     window.location.href = "limpar_cadastro.php";
 }
 
 function validarSenha() {
     var senha = document.getElementById('senha').value;
-    var senhaConf = document.getElementById('senha_conf').value;
     var regex = /^(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
     if (regex.test(senha)) {
         document.getElementById('mensagem').innerHTML = '';
-        //document.getElementById('btn_azul').disabled = false;
+        document.getElementById('btn_editar').disabled = false;
     } else {
         document.getElementById('mensagem').innerHTML = 'A senha deve conter pelo menos 8 caracteres e um número';
         document.getElementById('btn_azul').disabled = true;
+        document.getElementById('btn_editar').disabled = true;
     }
 }
 
@@ -89,13 +66,13 @@ function senhasIguais() {
     }
 }
 
-//preview imagem
-const inputFile = document.querySelector("#picture__input");
-const pictureImage = document.querySelector(".picture__image");
-const pictureImageTxt = "Escolha a imagem";
-pictureImage.innerHTML = pictureImageTxt;
+// Preview foto de perfil
+const perfilInputFile = document.querySelector("#perfil_img");
+const perfilPictureImage = document.querySelector(".perfil_img");
+const perfilPictureImageTxt = "Escolha a imagem";
+perfilPictureImage.innerHTML = perfilPictureImageTxt;
 
-inputFile.addEventListener("change", function (e) {
+perfilInputFile.addEventListener("change", function (e) {
   const inputTarget = e.target;
   const file = inputTarget.files[0];
 
@@ -104,17 +81,94 @@ inputFile.addEventListener("change", function (e) {
 
     reader.addEventListener("load", function (e) {
       const readerTarget = e.target;
-
       const img = document.createElement("img");
-      img.src = readerTarget.result;
-      img.classList.add("picture__img");
 
-      pictureImage.innerHTML = "";
-      pictureImage.appendChild(img);
+      img.src = readerTarget.result;
+      img.classList.add("perfil_img");
+
+      perfilPictureImage.innerHTML = "";
+      perfilPictureImage.appendChild(img);
     });
 
     reader.readAsDataURL(file);
   } else {
-    pictureImage.innerHTML = pictureImageTxt;
+    perfilPictureImage.innerHTML = perfilPictureImageTxt;
   }
 });
+
+// Preview foto de CNH
+const cnhInputFile = document.querySelector("#cnh_img");
+const cnhPictureImage = document.querySelector(".cnh_img");
+const cnhPictureImageTxt = "Escolha a imagem";
+cnhPictureImage.innerHTML = cnhPictureImageTxt;
+
+cnhInputFile.addEventListener("change", function (e) {
+  const inputTarget = e.target;
+  const file = inputTarget.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function (e) {
+      const readerTarget = e.target;
+      const img = document.createElement("img");
+
+      img.src = readerTarget.result;
+      img.classList.add("cnh_img");
+
+      cnhPictureImage.innerHTML = "";
+      cnhPictureImage.appendChild(img);
+    });
+
+    reader.readAsDataURL(file);
+  } else {
+    cnhPictureImage.innerHTML = cnhPictureImageTxt;
+  }
+});
+
+/*function TamanhoImagem(){
+   var perfil_img = "perfil_img";
+   var cnh_img = "cnh_img";
+   var TamanhoEmBytes = 2097152;
+   var perfil = document.getElementById(perfil_img);
+   var cnh = document.getElementById(cnh_img);
+   if(perfil.files && perfil.files.length == 1 && perfil.files[0].size > TamanhoEmBytes){
+      alert("Foto de perfil muito grande. Tamanho máximo: " + parseInt(TamanhoEmBytes/1024/1024) + "MB");
+      return false;
+   }if(cnh.files && cnh.files.length == 1 && cnh.files[0].size > TamanhoEmBytes){
+        alert("Foto da cnh muito grande. Tamanho máximo: " + parseInt(TamanhoEmBytes/1024/1024) + "MB");
+        return false;
+    }
+   return true;
+}*/
+
+function Erros(){
+  var TamanhoEmBytes = 2097152;
+  var perfil = document.getElementById("perfil_img");
+  var cnh = document.getElementById("cnh_img");
+  var mensagem = document.getElementById("mensagem");
+  if(perfil.files && perfil.files.length == 1 && perfil.files[0].size > TamanhoEmBytes) {
+     alert("Foto de perfil muito grande. Tamanho máximo: " + parseInt(TamanhoEmBytes/1024/1024) + "MB");
+     return false;
+  }
+  if(cnh.files && cnh.files.length == 1 && cnh.files[0].size > TamanhoEmBytes) {
+     alert("Foto da CNH muito grande. Tamanho máximo: " + parseInt(TamanhoEmBytes/1024/1024) + "MB");
+     return false;
+  }
+  if(mensagem && mensagem.innerHTML.trim() !== "") {
+     alert("Corrija os requisitos da senha.");
+     return false;
+  }
+  return true;
+}
+
+function alert_deletar(){
+  var resposta = confirm("Ao excluir sua conta todos os dados serão perdidos e não será possível recuperá-los. Deseja prosseguir?");
+  if (resposta) {
+    // Lógica para deletar o item
+    window.location.href = "excluir_usuario.php";
+  } else {
+    // Lógica caso o usuário cancele
+    window.location.href = "#";
+  }
+}

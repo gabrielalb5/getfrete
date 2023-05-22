@@ -1,6 +1,6 @@
 <?php require("../database/funcoes.php");
 require("../util/mensagens.php");
-if(isset($_SESSION["logado"])){logado();};?>
+deslogado();?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -19,9 +19,9 @@ if(isset($_SESSION["logado"])){logado();};?>
     <a class="navbar-brand" href="../public/index.php"><img src="../assets/img/logowhite.png" alt="GET FRETE" class="logo"></a>
     <a href="#" class="toggle-button"><span class="material-symbols-outlined">menu</span></a>
     <div class="navbar-nav navbar-links">
-      <a class="nav-item nav-link" href="../public/index.php">Entrar</a>
-      <a class="nav-item nav-link" href="../public/cadastro.php">Cadastro</a>
-      <a class="nav-item nav-link" href="../public/sobre.php">Sobre</a>
+      <a class="nav-item nav-link" href="../motorista/inicio.php">Início</a>
+      <a class="nav-item nav-link" href="../motorista/perfil.php">Perfil</a>
+      <a class="nav-item nav-link" href="../src/logout.php"><span class="material-symbols-outlined">logout</span> Sair</a>
     </div>
     </nav>
     <div class="espacamento"></div>

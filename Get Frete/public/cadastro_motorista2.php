@@ -8,7 +8,7 @@
 <div class="cadastro">
 <div class="form-cad">
     <h2>Cadastro de motorista</h2>
-    <h5>informações de contato</h5>
+    <h5>informações adicionais</h5>
     <form enctype="multipart/form-data" action="cadastro_motorista3.php" method="post">
     <div id="colunas">
         <div id="col1">
@@ -26,12 +26,16 @@
                     <option value="">Escolha...</option>
                 </select>
             </div>
+            <div class="textfield">
+                <label for="numero_cnh">CNH</label>
+                <input type="text" placeholder="XXX.XXX.XXX-XX" id="numero_cnh" name="numero_cnh" maxlength="14" minlength="14" value="<?php if(isset($_SESSION["numero_cnh"])){echo $_SESSION["numero_cnh"];}; ?>" required>
+            </div>
         </div>
         <div id="col2">
         <div class="input-box">
-            <label for="picture__input">Foto de perfil</label>
-            <label class="picture" for="picture__input" tabIndex="0"><span class="picture__image"></span></label>
-            <input type="file" accept="image/*" name="perfil" id="picture__input" required>
+            <label for="perfil_img">Foto de perfil</label>
+            <label class="picture" for="perfil_img" tabIndex="0"><span class="perfil_img"></span></label>
+            <input type="file" accept="image/*" name="perfil_img" id="perfil_img" required>
         </div>
             <div class="textfield">
                 <label for="cidade">Cidade</label>
@@ -39,9 +43,18 @@
                     <option value="">Escolha...</option>
                 </select>
             </div>
+            <div class="textfield">
+                <label for="validade_cnh">Validade</label>
+                <input type="date" id="validade_cnh" name="validade_cnh" value="<?php if(isset($_SESSION["validade_cnh"])){echo $_SESSION["validade_cnh"];}; ?>" required></br>
+        </div>
         </div>
     </div>
-    <input type="submit" value="Continuar" class="btn" id="btn_azul"/>
+    <div class="input-box">
+            <label for="cnh_img">Foto da CNH</label>
+            <label class="picture" id="cnh_preview" for="cnh_img" tabIndex="0"><span class="cnh_img"></span></label>
+            <input type="file" accept="image/*" name="cnh_img" id="cnh_img" required>
+    </div>
+    <input type="submit" value="Finalizar" onclick="return Erros()" class="btn" id="btn_azul"/>
     <button class="btn btn-light" id="btn_branco" onclick="red_cad_motorista()"><span class="material-symbols-outlined">arrow_back</span> Voltar</button>
     </form>
 </div>

@@ -77,7 +77,7 @@ function cadastrarMotorista(){
     }
     $conexao->close();
     cadastrarCNH();
-    //ImagemMotorista();
+    ImagemMotorista();
     LimparCadastro();
 }
 //Cadastro de CNH
@@ -98,20 +98,19 @@ function cadastrarCNH(){
         $stmt->close();
     }
     $conexao->close();
+    ImagemCNH();
 }
 //Cadastro das imagens
 function ImagemCliente(){
-    $imagem = $_SESSION["perfil"];
+    $imagem = $_SESSION["perfil_img"];
     $email = $_SESSION["email"];
-    $pasta = "../arquivos/clientes/";
+    $pasta = "../assets/arquivos/clientes/";
     $nomeDoArquivo = $imagem['name'];
     $novoNomeDoArquivo = $email;
     $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
     $path = $pasta . $novoNomeDoArquivo . "." . $extensao;
-    move_uploaded_file($imagem['tmp_name'], $path);
     $deu_certo = move_uploaded_file($imagem['tmp_name'], $path);
-    //só funciona se for ao contrário? estranho
-    if($deu_certo==false){
+    if($deu_certo){
         $conexao = obterConexao();
         $sql = "INSERT INTO imagens_cliente (nome, path, email, extensao) VALUES (?,?,?,?)";
         $stmt = $conexao->prepare($sql);
@@ -121,15 +120,14 @@ function ImagemCliente(){
         $conexao->close();
     }
 }
-/*function ImagemMotorista(){
-    $imagem = $_SESSION["perfil"];
+function ImagemMotorista(){
+    $imagem = $_SESSION["perfil_img"];
     $email = $_SESSION["email"];
-    $pasta = "../arquivos/motoristas/perfil/";
+    $pasta = "../assets/arquivos/motoristas/perfil/";
     $nomeDoArquivo = $imagem['name'];
     $novoNomeDoArquivo = $email;
     $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
     $path = $pasta . $novoNomeDoArquivo . "." . $extensao;
-    move_uploaded_file($imagem['tmp_name'], $path);
     $deu_certo = move_uploaded_file($imagem['tmp_name'], $path);
     if($deu_certo){
         $conexao = obterConexao();
@@ -140,15 +138,31 @@ function ImagemCliente(){
         $stmt->close();
         $conexao->close();
     }
-}*/
-
+}
+function ImagemCNH(){
+    $imagem = $_SESSION["cnh_img"];
+    $email = $_SESSION["email"];
+    $pasta = "../assets/arquivos/motoristas/cnh/";
+    $nomeDoArquivo = $imagem['name'];
+    $novoNomeDoArquivo = $email;
+    $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
+    $path = $pasta . "cnh_" . $novoNomeDoArquivo . "." . $extensao;
+    $deu_certo = move_uploaded_file($imagem['tmp_name'], $path);
+    if($deu_certo){
+        $conexao = obterConexao();
+        $sql = "INSERT INTO imagens_cnh (nome, path, email, extensao) VALUES (?,?,?,?)";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("ssss", $novoNomeDoArquivo, $path, $email, $extensao);
+        $stmt->execute();
+        $stmt->close();
+        $conexao->close();
+    }
+}
 //Limpar sessão com dados de cadastro
 function LimparCadastro(){
     unset($_SESSION["nome"], $_SESSION["sobrenome"], $_SESSION["nome_social"], $_SESSION["email"], $_SESSION["senha"], $_SESSION["senha_conf"], $_SESSION["cpf"], $_SESSION["telefone"], $_SESSION["uf"], $_SESSION["cidade"], $_SESSION["numero_cnh"], $_SESSION["validade_cnh"], $_SESSION["perfil"]);
 }
-
 function login($email,$senha,$opcao_login){
-    var_dump($opcao_login);
     if($opcao_login=="motorista"){
         $conexao = obterConexao();
         $sql = "SELECT * FROM motorista WHERE email = ?";
@@ -164,8 +178,10 @@ function login($email,$senha,$opcao_login){
             $stmt->execute();
             $resultado = $stmt->get_result();
             if(mysqli_num_rows($resultado)>0){
+                $_SESSION["senha"] = $senha;
                 $_SESSION["logado"] = $email;
-                header("Location:../logado/motorista/inicio_motorista.php");
+                $_SESSION["perfil"] = $opcao_login;
+                header("Location:../motorista/inicio.php");
             }else{
                 $_SESSION["msg"] = 'Senha incorreta.';
                 $_SESSION["tipo_msg"] = 'alert-danger';
@@ -191,8 +207,10 @@ function login($email,$senha,$opcao_login){
             $stmt->execute();
             $resultado = $stmt->get_result();
             if(mysqli_num_rows($resultado)>0){
+                $_SESSION["senha"] = $senha;
                 $_SESSION["logado"] = $email;
-                header("Location:../logado/cliente/inicio_cliente.php");
+                $_SESSION["perfil"] = $opcao_login;
+                header("Location:../cliente/inicio.php");
             }else{
                 $_SESSION["msg"] = 'Senha incorreta.';
                 $_SESSION["tipo_msg"] = 'alert-danger';
@@ -203,6 +221,260 @@ function login($email,$senha,$opcao_login){
             $_SESSION["tipo_msg"] = 'alert-danger';
             header("Location:../public/index.php");
         }
+    }
+}
+function buscarUsuario(){
+    $perfil = $_SESSION["perfil"];
+    $conexao = obterConexao();
+    if($perfil=="motorista"){
+        $sql = "SELECT * FROM motorista WHERE email = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("s", $_SESSION["logado"]);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $_SESSION["usuario"] = mysqli_fetch_assoc($resultado);
+        $stmt->close();
+    }else{
+        $sql = "SELECT * FROM cliente WHERE email = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("s", $_SESSION["logado"]);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $_SESSION["usuario"] = mysqli_fetch_assoc($resultado);
+        $stmt->close();
+    }
+}
+function buscarCNH(){
+    $conexao = obterConexao();
+    $sql = "SELECT * FROM cnh WHERE email = ?";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("s", $_SESSION["logado"]);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    $_SESSION["cnh"] = mysqli_fetch_assoc($resultado);
+    $stmt->close();
+}
+function buscarImagem(){
+    $perfil = $_SESSION["perfil"];
+    $conexao = obterConexao();
+    if($perfil=="motorista"){
+        $sql = "SELECT * FROM imagens_motorista WHERE email = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("s", $_SESSION["logado"]);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $_SESSION["imagem"] = mysqli_fetch_assoc($resultado);
+        $stmt->close();
+    }else{
+        $sql = "SELECT * FROM imagens_cliente WHERE email = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("s", $_SESSION["logado"]);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        $_SESSION["imagem"] = mysqli_fetch_assoc($resultado);
+        $stmt->close();
+    }
+}
+function buscarImagemCNH(){
+    $conexao = obterConexao();
+    $sql = "SELECT * FROM imagens_cnh WHERE email = ?";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("s", $_SESSION["logado"]);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    $_SESSION["imagem_cnh"] = mysqli_fetch_assoc($resultado);
+    $stmt->close();
+}
+function saudacao(){
+    $usuario = $_SESSION["usuario"];
+    $uf = $_SESSION["usuario"]["uf"];
+    $c = $_SESSION["usuario"]["cidade"];
+    if($uf=="AC"){
+        date_default_timezone_set('America/Rio_Branco');
+    }else if($uf=="AM" || $uf=="MT" || $uf=="MS" || $uf=="RO" || $uf=="RR"){
+        date_default_timezone_set('America/Porto_Velho');
+    }else if($c=="Fernando de Noronha"){
+        date_default_timezone_set('America/Noronha');
+    }else{
+        date_default_timezone_set('America/Sao_Paulo');
+    }
+    $hora = date("H");
+    if($hora>=6 && $hora<12){
+        $saudacao = "Bom dia" . ', ' . $usuario["nome_social"];;
+    }else if($hora>=12 && $hora<18){
+        $saudacao = "Boa tarde" . ', ' . $usuario["nome_social"];;
+    }else{
+        $saudacao = "Boa noite" . ', ' . $usuario["nome_social"];;
+    }
+    return $saudacao;
+}
+function deslogado(){
+    if(!isset($_SESSION["usuario"])){
+        header("Location:../public/index.php");
+    }
+}
+function logado(){
+    if($_SESSION["perfil"] == "motorista"){
+        header("Location:../motorista/inicio.php");
+    }else{
+        header("Location:../cliente/inicio.php");
+    }
+}
+function logout(){
+    session_destroy();
+    header("Location:../public/index.php");
+}
+function updateCliente($nome,$sobrenome,$nome_social,$senha,$cpf,$telefone,$uf,$cidade){
+    $email = $_SESSION["logado"];
+    $conexao = obterConexao();
+    $senha_md5 = md5($senha);
+    $sql = "UPDATE cliente SET nome = ?, sobrenome = ?, nome_social = ?, senha = ?, cpf = ?, telefone = ?, uf = ?, cidade = ? WHERE email = ?";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("sssssssss",$nome,$sobrenome,$nome_social,$senha_md5,$cpf,$telefone,$uf,$cidade,$email);
+    $stmt->execute();
+    if($stmt->affected_rows>0){
+        $_SESSION["msg"] = 'Dados do usuário alterados com sucesso!';
+        $_SESSION["tipo_msg"] = "alert-success";
+        $_SESSION["senha"] = $senha;
+    }
+    $stmt->close();
+    $conexao->close();
+}
+function updateMotorista($nome,$sobrenome,$nome_social,$senha,$cpf,$telefone,$uf,$cidade){
+    $email = $_SESSION["logado"];
+    $conexao = obterConexao();
+    $senha_md5 = md5($senha);
+    $sql = "UPDATE motorista SET nome = ?, sobrenome = ?, nome_social = ?, senha = ?, cpf = ?, telefone = ?, uf = ?, cidade = ? WHERE email = ?";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("sssssssss",$nome,$sobrenome,$nome_social,$senha_md5,$cpf,$telefone,$uf,$cidade,$email);
+    $stmt->execute();
+    if($stmt->affected_rows>0){
+        $_SESSION["msg"] = 'Dados do usuário alterados com sucesso!';
+        $_SESSION["tipo_msg"] = "alert-success";
+        $_SESSION["senha"] = $senha;
+    }
+    $stmt->close();
+    $conexao->close();
+}
+function updateCNH($validade_cnh){
+    $email = $_SESSION["logado"];
+    $conexao = obterConexao();
+    $sql = "UPDATE cnh SET validade = ? WHERE email = ?";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("ss",$validade_cnh,$email);
+    $stmt->execute();
+    $stmt->close();
+    $conexao->close();
+}
+function updateImagemMotorista(){
+    $imagem = $_SESSION["nova_img"];
+    $email = $_SESSION["email"];
+    $pasta = "../assets/arquivos/motoristas/perfil/";
+    $nomeDoArquivo = $imagem['name'];
+    $novoNomeDoArquivo = $email;
+    $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
+    $path = $pasta . $novoNomeDoArquivo . "." . $extensao;
+    unlink($_SESSION["imagem"]["path"]);
+    $deu_certo = move_uploaded_file($imagem['tmp_name'], $path);
+    if($deu_certo){
+        $conexao = obterConexao();
+        $sql = "UPDATE imagens_motorista SET nome = ?, path = ?, extensao = ? WHERE email = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("ssss", $novoNomeDoArquivo, $path, $extensao, $email);
+        $stmt->execute();
+        $stmt->close();
+        $conexao->close();  
+    }
+    unset($_SESSION["nova_img"]);
+}
+function updateImagemCliente(){
+    $imagem = $_SESSION["nova_img"];
+    $email = $_SESSION["email"];
+    $pasta = "../assets/arquivos/clientes/";
+    $nomeDoArquivo = $imagem['name'];
+    $novoNomeDoArquivo = $email;
+    $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
+    $path = $pasta . $novoNomeDoArquivo . "." . $extensao;
+    unlink($_SESSION["imagem"]["path"]);
+    $deu_certo = move_uploaded_file($imagem['tmp_name'], $path);
+    if($deu_certo){
+        $conexao = obterConexao();
+        $sql = "UPDATE imagens_cliente SET nome = ?, path = ?, extensao = ? WHERE email = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("ssss", $novoNomeDoArquivo, $path, $extensao, $email);
+        $stmt->execute();
+        $stmt->close();
+        $conexao->close();
+    }
+    unset($_SESSION["nova_img"]);
+}
+function updateImagemCNH(){
+    buscarImagemCNH();
+    $imagem = $_SESSION["nova_cnh_img"];
+    $email = $_SESSION["email"];
+    $pasta = "../assets/arquivos/motoristas/cnh/";
+    $nomeDoArquivo = $imagem['name'];
+    $novoNomeDoArquivo = $email;
+    $extensao = strtolower(pathinfo($nomeDoArquivo, PATHINFO_EXTENSION));
+    $path = $pasta . "cnh_" . $novoNomeDoArquivo . "." . $extensao;
+    unlink($_SESSION["imagem_cnh"]["path"]);
+    $deu_certo = move_uploaded_file($imagem['tmp_name'], $path);
+    if($deu_certo){
+        $conexao = obterConexao();
+        $sql = "UPDATE imagens_cnh SET nome = ?, path = ?, extensao = ? WHERE email = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("ssss", $novoNomeDoArquivo, $path, $extensao, $email);
+        $stmt->execute();
+        $stmt->close();
+        $conexao->close();
+    }
+    unset($_SESSION["nova_cnh_img"]);
+}
+function excluirUsuario($email){
+    $conexao = obterConexao();
+    $perfil = $_SESSION["perfil"];
+    $perfil_img = $_SESSION["imagem"];
+    if($perfil=="motorista"){
+        buscarImagemCNH();
+        $cnh_img = $_SESSION["imagem_cnh"];
+        $sql = "DELETE FROM imagens_cnh WHERE email = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->close();
+        $sql = "DELETE FROM cnh WHERE email = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->close();
+        $sql = "DELETE FROM imagens_motorista WHERE email = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->close();
+        $sql = "DELETE FROM motorista WHERE email = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->close();
+        $conexao->close();
+        unlink($perfil_img["path"]);
+        unlink($cnh_img["path"]);
+        logout();
+    }else{
+        $sql = "DELETE FROM imagens_cliente WHERE email = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->close();
+        $sql = "DELETE FROM cliente WHERE email = ?";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->close();
+        $conexao->close();
+        unlink($perfil_img["path"]);
+        logout();
     }
 }
 ?>

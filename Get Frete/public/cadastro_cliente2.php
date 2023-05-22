@@ -29,9 +29,9 @@
         </div>
         <div id="col2">
         <div class="input-box">
-            <label for="picture__input">Foto de perfil</label>
-            <label class="picture" for="picture__input" tabIndex="0"><span class="picture__image"></span></label>
-            <input type="file" accept="image/*" name="perfil" id="picture__input" required>
+            <label for="perfil_img">Foto de perfil</label>
+            <label class="picture" for="perfil_img" tabIndex="0"><span class="perfil_img"></span></label>
+            <input type="file" accept="image/*" name="perfil_img" id="perfil_img" required>
         </div>
             <div class="textfield">
                 <label for="cidade">Cidade</label>
@@ -41,7 +41,7 @@
             </div>
         </div>
     </div>
-    <input type="submit" value="Finalizar" class="btn" id="btn_azul"/>
+    <input type="submit" value="Finalizar" onclick="return Erros()" class="btn" id="btn_azul"/>
     <button class="btn btn-light" id="btn_branco" onclick="red_cad_cliente()"><span class="material-symbols-outlined">arrow_back</span> Voltar</button>
     </form>
 </div>

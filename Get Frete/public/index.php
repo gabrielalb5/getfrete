@@ -1,6 +1,4 @@
-<?php include("../include/cabecalho_inicio.php");
-require("../util/mensagens.php");
-exibir_msg();?>
+<?php include("../include/cabecalho_inicio.php");?>
 <div class="main-login">
   <div id="left-login">
     <h2>Frete <span style="color:#5F9CB4">simplificado</span><h2><h3>solicite ou entregue</h3>
@@ -13,7 +11,7 @@ exibir_msg();?>
     <h3>Entrar</h3>
         <form action="../src/recupera_login.php" method="post">
           <div id="opcao_login">
-                <p>Você é:</p>
+                <p>Perfil:</p>
                 <input type="radio" id="cliente" value="cliente" name="opcao_login" required>
                 <label for="cliente">Cliente</label>
                 <input type="radio" id="motorista" value="motorista" name="opcao_login">

@@ -12,7 +12,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
 }
 #left-login{
     width: 40vw;
@@ -38,6 +38,9 @@ body{
     background: #F5F5F5;
     border-radius: 20px;
     box-shadow:  5px 5px 10px rgba(0, 0, 0, .212);
+}
+#card-login form{
+    width: 90%;
 }
 .textfield{
     flex-direction: column;
@@ -89,6 +92,10 @@ div#opcao_login input, label, p{
 a{
     text-decoration: none;
     color: #5F9CB4;
+    cursor: pointer;
+}
+#link{
+    cursor: pointer;
 }
 /*Logo do menu*/
 .logo{
@@ -162,6 +169,92 @@ footer img{
 .toggle-button:hover{
     color: #E2E2E2;
 }
+.cadastro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-cad{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20%;
+    background-color: #F5F5F5;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 10vh;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, .212);
+}
+.form-cad #colunas{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+#colunas #col1, form #col2{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+.form-cad h2{
+    margin: 20px;
+}
+#perfil_img, #cnh_img{
+    display: none;
+}
+ .picture{
+    width: 152px;
+    aspect-ratio: 2/2;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border: 2px dashed currentcolor;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    outline: none;
+    overflow: hidden;
+} 
+.picture:hover{
+    color: #777;
+    background: #ccc;
+}
+.picture:active{
+    border-color: #5F9CB4;
+    color: #5F9CB4;
+    background: #eee;
+}
+.picture:focus{
+    color: #777;
+    background: #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+} 
+  .perfil_img, .cnh_img{
+    max-width: 100%;
+}
+.input-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#cnh_preview{
+    width: 400px;
+    aspect-ratio: 16/9;
+}
+form #mensagem{
+    text-align: center;
+    color: red;
+}
+#caixa_erro{
+    display: flex;
+    justify-content: center;
+}
+#caixa_erro > p{
+    width: 90vw;
+}
 
 @media screen and (max-width: 1360px){
     .main-login{
@@ -203,90 +296,45 @@ footer img{
     .navbar-links.active{
         display: flex;
     }
+    .form-cad{
+        margin: 10vw;
+    }
+    #colunas{
+        display: flex;
+        flex-direction: column;
+    }
+    #cnh_preview{
+        width: 200px;
+        aspect-ratio: 16/9;
+    }
 }
-.cadastro{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+@media screen and (max-width: 770px){
+    .cabecalho .col{
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cabecalho{
+        text-align: center;
+    }
 }
-.form-cad{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20%;
-    background-color: #F5F5F5;
-    border-radius: 20px;
-    padding: 30px;
-    margin: 10vh;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, .212);
+.espacamento{
+    height: 120px;
 }
-.form-cad #colunas{
+.material-symbols-outlined{
+    vertical-align: middle;
+}
+#foto_perfil{
     display: flex;
     width: 100%;
-    justify-content: center;
-}
-#colunas #col1, form #col2{
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-}
-.form-cad h2{
-    margin: 20px;
-}
-#picture__input, #foto_cnh{
-    display: none;
-}
- .picture, .picture2{
-    width: 152px;
-    aspect-ratio: 2/2;
-    background: #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #aaa;
-    border: 2px dashed currentcolor;
-    cursor: pointer;
-    font-family: sans-serif;
-    transition: color 300ms ease-in-out, background 300ms ease-in-out;
-    outline: none;
-    overflow: hidden;
-} 
-.picture:hover{
-    color: #777;
-    background: #ccc;
-}
-.picture:active{
-    border-color: #5F9CB4;
-    color: #5F9CB4;
-    background: #eee;
-}
-.picture:focus{
-    color: #777;
-    background: #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-} 
-  .picture__img{
-    max-width: 100%;
-}
-.input-box{
-    display: flex;
+    height: 100%;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
-.picture2{
-    width: 400px;
-    aspect-ratio: 16/9;
-}
-form #mensagem{
-    text-align: center;
-    color: red;
-}
-#caixa_erro{
-    display: flex;
-    justify-content: center;
-}
-#caixa_erro > p{
-    width: 90vw;
+#foto_perfil img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
 }

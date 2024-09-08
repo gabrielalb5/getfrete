@@ -1,0 +1,24 @@
+﻿//Origem igual à cidade e uf do motorista
+SELECT p.id_p, p.descricao, p.origem, p.destino, p.data_entrega, p.horario, p.valor, p.status, cp.nome AS 'categoria'
+    FROM pedido p
+    INNER JOIN categoria_pedido cp ON p.categoria = cp.id_cp
+    LEFT JOIN proposta pr ON p.id_p = pr.pedido AND pr.motorista = ?
+    WHERE p.origem LIKE '%$cidade%$uf%' AND pr.pedido IS NULL ORDER BY p.data_entrega;
+
+//Origem, destino ou cidade e uf do cliente iguais ao do motorista
+SELECT p.id_p, p.descricao, p.origem, p.destino, p.data_entrega, p.horario, p.valor, p.status, cp.nome AS 'categoria'
+    FROM pedido p
+    INNER JOIN cliente c ON p.cliente = c.email
+    INNER JOIN categoria_pedido cp ON p.categoria = cp.id_cp
+    LEFT JOIN proposta pr ON p.id_p = pr.pedido AND pr.motorista = ?
+    WHERE (p.origem LIKE '%$cidade%$uf%' OR p.destino LIKE '%$cidade%$uf%' OR (c.cidade = ? AND c.uf = ?)) AND pr.pedido IS NULL
+    ORDER BY p.data_entrega
+
+//ATUAL: Somente origem e destino iguais à cidade e uf do motorista
+SELECT p.id_p, p.descricao, p.origem, p.destino, p.data_entrega, p.horario, p.valor, p.status, cp.nome AS 'categoria'
+    FROM pedido p
+    INNER JOIN cliente c ON p.cliente = c.email
+    INNER JOIN categoria_pedido cp ON p.categoria = cp.id_cp
+    LEFT JOIN proposta pr ON p.id_p = pr.pedido AND pr.motorista = ?
+    WHERE (p.origem LIKE '%$cidade%$uf%' OR p.destino LIKE '%$cidade%$uf%') AND pr.pedido IS NULL
+    ORDER BY p.data_entrega

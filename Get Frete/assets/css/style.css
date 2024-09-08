@@ -1,0 +1,652 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+body{
+    margin: 0;
+}
+main{
+    min-height: 100vh;
+}
+.main-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+#left-login{
+    width: 40vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 5vw;
+}
+#right-login{
+    width: 45vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#card-login{
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    background: #F5F5F5;
+    border-radius: 20px;
+    box-shadow:  5px 5px 10px rgba(0, 0, 0, .212);
+}
+#card-login form{
+    width: 90%;
+}
+.textfield{
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.textfield > input, select{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+}
+#olho{
+    display: flex;
+    position: relative;
+    margin-top: -50px;
+    margin-left: 85%;
+    margin-bottom: auto;
+}
+#olho:hover{
+    color: #5F9CB4;
+    cursor: pointer;
+}
+#historico, nav, #btn_azul{
+    background-color: #5F9CB4;
+    color: white;
+}
+#nav-link{
+    color: white;
+}
+/*Botão de tipo de usuário*/
+div#opcao_login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+div#opcao_login input, label, div#opcao_login p{
+    margin-bottom: 10px;
+    margin-right: 10px;
+    accent-color: #5F9CB4;
+}
+#btn_azul, #btn_branco{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+a{
+    text-decoration: none;
+    color: #5F9CB4;
+    cursor: pointer;
+}
+#link{
+    cursor: pointer;
+}
+/*Logo do menu*/
+.logo{
+    width: 200px;
+    background-color: #5F9CB4;
+}
+/*Imagem inicial*/
+.caminhao{
+    width: 40vw;
+}
+.cliente, .motorista{
+    width: 30vw;
+}
+.main-cadastro{
+    margin-bottom: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#right-cadastro, #left-cadastro{
+    margin: 0px 30px;
+    padding: 20px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F5F5F5;
+    border-radius: 20px;
+}
+#right-cadastro:hover, #left-cadastro:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, .212);
+}
+#right-cadastro:active, #left-cadastro:active{
+    color: #5F9CB4;
+    box-shadow: 0px 0px 25px #5F9CB4;
+}
+.main-cadastro h3{
+    margin-top: 20px;
+}
+#titulo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px;
+}
+footer{
+    margin-top: 20px;
+    background-color: #F5F5F5;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+footer img{
+    width: 150px;
+}
+
+.toggle-button{
+    color: white;
+    position: absolute;
+    display: none;
+    top: 2.5rem;
+    right: 1rem ;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 30px;
+    height: 20px;
+}
+.toggle-button:hover{
+    color: #E2E2E2;
+}
+.cadastro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.form-cad{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20%;
+    background-color: #F5F5F5;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 10vh;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, .212);
+}
+#colunas{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+#colunas #col1, form #col2{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+.form-cad h2{
+    margin: 20px;
+}
+#perfil_img, #cnh_img{
+    display: none;
+}
+ .picture{
+    width: 152px;
+    aspect-ratio: 2/2;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border: 2px dashed currentcolor;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 300ms ease-in-out, background 300ms ease-in-out;
+    outline: none;
+    overflow: hidden;
+} 
+.picture:hover{
+    color: #777;
+    background: #ccc;
+}
+.picture:active{
+    border-color: #5F9CB4;
+    color: #5F9CB4;
+    background: #eee;
+}
+.picture:focus{
+    color: #777;
+    background: #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+} 
+  .perfil_img, .cnh_img{
+    max-width: 100%;
+}
+.input-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#cnh_preview{
+    width: 400px;
+    aspect-ratio: 16/9;
+}
+form #mensagem{
+    text-align: center;
+    color: red;
+}
+#caixa_erro{
+    display: flex;
+    justify-content: center;
+}
+#caixa_erro > p{
+    width: 90vw;
+}
+#foto_cnh{
+    margin: 0px 0px 10px -10px;
+    width: 400px;
+    height: 225px;
+}
+#foto_cnh img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#pagamentos{
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+@media screen and (max-width: 1100px){
+    .main-login{
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        margin: 5vh;
+    }
+    #left-login{
+        width: 50vw;
+    }
+    #card-login{
+        width: 100vw;
+    }
+    .main-cadastro{
+        flex-direction: column;
+    }
+    #right-cadastro{
+        margin-top: 20px;
+    }
+}
+@media screen and (max-width: 1000px){
+    .toggle-button{
+        display: flex;
+    }
+    .navbar-links{
+        display: none;
+        width: 100%;
+    }
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar-links a{
+        display: flex;
+        justify-content: center;
+        
+    }
+    .navbar-links.active{
+        display: flex;
+    }
+    .form-cad{
+        margin: 10vw;
+    }
+    #colunas{
+        display: flex;
+        flex-direction: column;
+    }
+    #cnh_preview{
+        width: 200px;
+        aspect-ratio: 16/9;
+    }
+    #foto_cnh{
+        margin-left: -10px;
+        width: 200px;
+        height: 112.5px;
+    }
+    #pagamentos{
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    #sobre #introducao{
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+    }
+    #sobre #introducao #texto{
+        width: 80vw;
+    }
+    #sobre #espaco{
+        display: none;
+    }
+    #left-login{
+        margin: 0;
+    }
+    #left-login h3{
+        display: flex;
+        justify-content: center;
+    }
+    #sobre #time{
+        display: flex;
+        flex-direction: column;
+    }
+    #time iframe{
+        margin-bottom: 20px;
+    }
+}
+@media screen and (max-width: 770px){
+    .cabecalho .col{
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cabecalho{
+        text-align: center;
+    }
+    .caminhao{
+        width: 60vw;
+    }
+    #left-login h3{
+        width: 80vw;
+    }
+}
+.espacamento{
+    height: 120px;
+}
+.material-symbols-outlined{
+    vertical-align: middle;
+}
+#foto_perfil{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+#foto_perfil img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.hidden{
+    display: none;
+}
+.modal-content{
+    background-color: #F5F5F5;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 10px 0;
+}
+.titulo_veiculo{
+    display: flex;
+    justify-content: space-between;
+}
+#botao_largo{
+    width: 100%;
+}
+#texto_animado{
+    overflow: hidden;
+    position: relative;
+}
+#texto_animado::after{
+    content: "fácil";
+    display: inline-block;
+    animation: animation 5s steps(5) infinite;
+    width: 0ch;
+    color: #5F9CB4;
+}
+#texto_animado::before{
+    display: inline-block;
+    content: '';
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    animation: blinking .5s linear alternate infinite;
+}
+@keyframes animation{
+    25%{
+        content: "fácil";
+        width: 3ch;
+    }
+    50%{
+        width: 0ch;
+    }
+    75%{
+        content: "simples";
+        width: 5.5ch;
+    }
+    90%{
+        width: 0ch;
+    }
+}
+@keyframes blinking{
+    100%{
+        opacity: 0;
+    }
+}
+
+#form_pedido{
+    padding: 30px;
+    background: #F5F5F5;
+    border-radius: 20px;
+    box-shadow:  5px 5px 10px rgba(0, 0, 0, .212);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#form_pedido h4{
+    text-align: center;
+}
+/*#form_pedido #rota_mapa{
+    display: flex;
+    justify-content: center;
+}*/
+.content{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#pedidos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#card_pedido{
+    width: 40%;
+    min-width: 400px;
+    padding: 20px;
+    margin: 20px;
+    background: #F5F5F5;
+    border-radius: 20px;
+    box-shadow:  5px 5px 10px rgba(0, 0, 0, .212);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+#propostas{
+    display: flex;
+    flex-direction: column;
+}
+#proposta{
+    display: flex;
+    flex-direction: row;
+}
+#proposta label{
+    margin: 20px 0 0 20px;
+}
+.saudacao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#map{
+    width: 100%;
+    height: 60vh;
+}
+#avaliacoes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    flex-wrap: wrap;
+}
+#card_avaliacao{
+    max-width: 300px;
+    padding: 20px;
+    margin: 20px;
+    background: #F5F5F5;
+    border-radius: 20px;
+    box-shadow:  5px 5px 10px rgba(0, 0, 0, .212);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+#card_agenda{
+    width: 20%;
+    min-width: 250px;
+    padding: 20px;
+    margin: 20px;
+    background: #F5F5F5;
+    border-radius: 20px;
+    box-shadow:  5px 5px 10px rgba(0, 0, 0, .212);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+#nav_historico{
+    background-color: white;
+}
+#tabela_historico{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.notificacao, .notificacao-lida{
+    padding: 10px;
+    width: 100%;
+    border-bottom: 0.5px solid #e0e4e7;
+    margin: 0;
+}
+.notificacao:last-child{
+    border: none;
+}
+.notificacao:hover{
+    background-color: #e0e4e7;
+}
+.notificacao-lida{
+    background-color: #e0e4e7;
+    color: #777;
+}
+#sino{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#sino a:first-child{
+    padding-right: 0;
+}
+#bolinha_notificacao{
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    color: white;
+}
+#sobre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#sobre #texto, .card-body p{
+    text-indent: 30px;
+    text-align: justify;
+}
+#sobre .row{
+    align-items: center;
+}
+#sobre #time{
+    display: flex;
+    margin: 10px 0px 50px 60px;
+}
+#sobre #introducao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+#sobre #texto{
+    width: 30%;
+}
+#sobre #gif{
+    width: 300px;
+}
+#sobre #container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80vw;
+}
+#accordion .card{
+    width: 60vw;
+}
+#sobre h3, #sobre h4{
+    margin-bottom: 15px;
+}

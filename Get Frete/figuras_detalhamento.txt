@@ -1,0 +1,76 @@
+Figura 3.1 - Diagrama Entidade Relacionamento.
+Figura 3.2 - Página inicial do Get Frete.
+Figura 3.3 - Escolha de perfil.
+Figura 3.4 - Cadastro de cliente: informações iniciais.
+Figura 3.5 - Cadastro de cliente:  informações complementares.
+Figura 3.6 - Cadastro de motorista:  informações iniciais.
+Figura 3.7 - Cadastro de motorista:  informações complementares.
+Figura 3.8 - Verificação de requisitos da senha.
+Figura 3.9 - Verificação de senhas iguais.
+Figura 3.10 - Preencha este campo.
+Figura 3.11 - Foto de perfil muito grande.
+Figura 3.12 - Foto da CNH muito grande.
+Figura 3.13 - Erro: E-mail já cadastrado.
+Figura 3.14 - Erro: CNH já cadastrada.
+Figura 3.15 - Cadastrado com sucesso.
+Figura 3.16 - Entrar cliente senha oculta.
+Figura 3.17 - Entrar motorista senha visível.
+Figura 3.18 - Formulário “Esqueci a senha”.
+Figura 3.19 - E-mail de alteração de senha.
+Figura 3.20 - Formulário de alteração de senha.
+Figura 3.21 - Menu de navegação logado.
+Figura 3.22 - Início de motorista sem veículo.
+Figura 3.23 - Perfil de motorista sem veículo.
+Figura 3.24 - Cadastro de veículo.
+Figura 3.25 - Veículos.
+Figura 3.26 - Editar veículos.
+Figura 3.27 - Perfil de motorista.
+Figura 3.28 - Configurações.
+Figura 3.29 - Editar perfil 1.
+Figura 3.30 - Editar perfil 2.
+Figura 3.31 - Excluir minha conta.
+Figura 3.32 - Perfil de cliente.
+Figura 3.33 - Não há pedidos disponíveis.
+Figura 3.34 - Formulário de pedido.
+Figura 3.35 - Aguardando propostas.
+Figura 3.36 - Sem propostas.
+Figura 3.37 - Novos pedidos.
+Figura 3.38 - Formulário de proposta.
+Figura 3.39 - Propostas enviadas.
+Figura 3.40 - Ícone de notificações.
+Figura 3.41 - Notificações de proposta.
+Figura 3.42 - Propostas para pedido.
+Figura 3.43 - Notificação de escolha da proposta.
+Figura 3.44 - Entregas agendadas.
+Figura 3.45 - Pedidos confirmados.
+Figura 3.46 - Ver detalhes (motorista).
+Figura 3.47 - Ver detalhes com cancelamento (motorista).
+Figura 3.48 - Próxima entrega em horas.
+Figura 3.49 - Próxima entrega em minutos.
+Figura 3.50 - Entrega atrasada.
+Figura 3.51 - Notificação de entrega iniciada.
+Figura 3.52 - Entrega iniciada.
+Figura 3.53 - Notificação de entrega finalizada.
+Figura 3.54 - Avaliação pendente.
+Figura 3.55 - Histórico de cliente.
+Figura 3.56 - Histórico de motorista.
+Figura 3.57 - Detalhes do histórico.
+Figura 3.58 - Nota do motorista.
+Figura 3.59 - Sobre e Ajuda.
+Figura 3.60 - Responsividade: Página inicial do Get Frete.
+Figura 3.61 - Responsividade: Formulário de pedido.
+Figura 3.62 - Responsividade: Menu de navegação logado.
+Figura 3.63 - Responsividade: Perfil de motorista.
+Figura 3.64 - Responsividade: Histórico de motorista.
+Figura 3.65 - Responsividade: Entrega iniciada.
+
+
+
+servidor: getfrete
+usuario: getfrete
+senha: getfrete
+
+
+
+
+

@@ -1,6 +1,6 @@
 # Get Frete
 O sistema web de gerenciamento de fretes, "Get Frete", foi desenvolvido em 2023, durante meu último ano do curso de Informática Integrado ao Ensino Médio (Instituto Federal de Educação, Ciência e Tecnologia de São Paulo, Campus Araraquara).
-Para mais informações leia o <a href="https://pergamumweb.com.br/pergamumweb_ifsp/vinculos/0000a4/0000a4d5.pdf" target="_blank">artigo</a>.
+Para mais informações leia o <a href="https://pergamumweb.com.br/pergamumweb_ifsp/vinculos/0000a4/0000a4d5.pdf" target="_blank">artigo</a> e <a href="https://youtu.be/tII47vcVTCM?si=sRx4zhNZtp0yqVfB" target="_blank">assista</a> o sistema em funcionamento.
 
 - **Linguagens**
   - HTML
